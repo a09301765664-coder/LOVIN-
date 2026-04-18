@@ -60,23 +60,25 @@
 
         h2 { color: var(--gold); border-left: 5px solid var(--soft-peach); padding-left: 15px; margin-top: 0; font-size: 1.3rem; }
         
-        /* 應對話術樣式 */
         .qa-item { margin-bottom: 20px; border-bottom: 1px solid var(--milk-cream); padding-bottom: 15px; }
         .qa-q { color: var(--gold); font-weight: bold; font-size: 1.05rem; display: block; margin-bottom: 5px; }
-        .qa-fact { font-size: 0.8rem; color: #999; margin-bottom: 8px; }
+        .qa-fact { font-size: 0.8rem; color: #999; margin-bottom: 8px; font-style: italic; }
         .qa-a { color: var(--deep-sage); background: var(--soft-yellow); padding: 10px 15px; border-radius: 10px; display: block; }
-        .qa-a ul { margin: 5px 0; padding-left: 18px; }
+        .qa-a div { margin-bottom: 4px; border-left: 2px solid var(--gold); padding-left: 8px; }
 
-        /* 其他通用樣式 */
         .power-item { background: var(--soft-yellow); padding: 15px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
         .highlight { color: var(--accent-red); font-weight: bold; }
         .client-tag { display: inline-block; background: var(--milk-cream); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin: 2px; border: 1px solid var(--soft-peach); }
+        
         .promo-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .promo-table td { padding: 12px 5px; border-bottom: 1px solid var(--milk-cream); font-size: 0.95rem; }
         .price { font-weight: bold; color: var(--accent-red); text-align: right; }
-        .gift-list { list-style: none; padding: 0; }
-        .gift-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #eee; font-size: 0.9rem; }
-        .gift-list b { color: var(--gold); }
+        
+        .gift-list { list-style: none; padding: 0; margin: 10px 0; }
+        .gift-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #eee; font-size: 0.95rem; }
+        .gift-list b { color: var(--gold); text-align: right; }
+        
+        .example-box { background: var(--soft-yellow); padding: 15px; border-radius: 12px; font-size: 0.9rem; margin-top: 15px; border: 1px solid var(--soft-peach); }
 
         footer { text-align: center; padding: 30px; font-size: 0.75rem; color: var(--sage-green); }
     </style>
@@ -90,7 +92,7 @@
 
 <nav>
     <button class="active" onclick="switchTab('brand')">品牌實力</button>
-    <button onclick="switchTab('promo')">4月促銷</button>
+    <button onclick="switchTab('promo')">促銷活動</button>
     <button onclick="switchTab('gift')">滿額累贈</button>
     <button onclick="switchTab('qa')">應對話術</button>
 </nav>
@@ -105,20 +107,24 @@
                 🔥 <strong>市場震撼彈：</strong><br>
                 市面上 <span class="highlight">3 顆夏威夷豆，有 2 顆</span>就是從我們家出去的！
             </div>
+            
+            <p style="font-size: 0.9rem;"><strong>⚙️ 品牌競爭力：</strong></p>
+            <div class="power-item" style="background: #eef2f3; border-left-color: var(--deep-sage);">
+                • <strong>獨家 AI 第五代智能低溫烘培</strong><br>
+                • <strong>急速冷粹技術</strong>（鎖住營養與鮮甜）
+            </div>
+
             <p style="font-size: 0.9rem;"><strong>原料供應夥伴：</strong></p>
             <div style="margin-bottom: 20px;">
                 <span class="client-tag">萬歲牌</span><span class="client-tag">紅布朗</span><span class="client-tag">亞尼克</span>
-                <span class="client-tag">吳寶春</span><span class="client-tag">大稻埕堅果</span>
+                <span class="client-tag">吳寶春</span><span class="client-tag">大稻埕堅果</span><span class="client-tag">各大飯店御用堅果</span>
+                <span class="client-tag">量販店賣場</span>
             </div>
+            
             <div class="power-item" style="background: var(--milk-cream);">
                 <strong>💡 核心差異點：</strong><br>
                 👉 不同品牌原料等級差很多。別人選便宜原料，吃起來<span class="highlight">油耗味重</span>；<br>
                 👉 <strong>LOVIN</strong> 堅持用最高等級原料，成本高但吃得出差異。
-            </div>
-            <p style="font-size: 0.9rem;"><strong>知名企業合作：</strong></p>
-            <div style="margin-bottom: 20px;">
-                <span class="client-tag">晶華飯店</span><span class="client-tag">老爺酒店</span><span class="client-tag">文華東方</span>
-                <span class="client-tag">詩特莉甜點</span><span class="client-tag">天仁茗茶</span>
             </div>
             <p style="font-size: 0.9rem;">📍 <strong>門市據點：</strong><br>
             台北車站 | 中山誠品 | 松菸誠品 | 信義 A8</p>
@@ -139,17 +145,39 @@
             <h2>📦 袋裝 / 罐裝系列</h2>
             <p style="font-weight: bold; text-align: center; font-size: 1.2rem; color: var(--accent-red);">全品項 買四送一</p>
         </div>
+        <div class="card">
+            <h2>✨ 大宗結帳折扣</h2>
+            <p>• 滿 <strong>$3,000</strong> ➔ 享 <strong>95 折</strong></p>
+            <p>• 滿 <strong>$5,000</strong> ➔ 享 <strong>9 折</strong></p>
+        </div>
     </div>
 
     <div id="gift" class="section">
         <div class="card">
-            <h2>4月滿額禮 (可累贈)</h2>
+            <h2>活動如下</h2>
+            <p style="font-weight: bold; color: var(--deep-sage); border-bottom: 2px solid var(--soft-peach); padding-bottom: 5px;">滿額贈清單</p>
             <ul class="gift-list">
-                <li><span>$500</span> <b>試吃包/茶包 2入</b></li>
-                <li><span>$1,000</span> <b>試吃包 4入</b></li>
-                <li><span>$1,200</span> <b>蛋捲 2隻</b></li>
-                <li><span>$5,000</span> <b>雲朵禮盒 6入</b></li>
+                <li><span>500 元</span> <b>試吃包 2入 / 茶包 2入</b></li>
+                <li><span>1000 元</span> <b>試吃包 4入</b></li>
+                <li><span>1200 元</span> <b>蛋捲兩隻</b></li>
+                <li><span>2000 元</span> <b>即期口味隨手包 4入</b></li>
+                <li><span>3000 元</span> <b>品牌麻布袋</b></li>
+                <li><span>5000 元</span> <b>雲朵禮盒隨手包 6入</b></li>
+                <li><span>10000 元</span> <b>任選款式中禮盒(12入隨手包)</b></li>
+                <li><span>20000 元</span> <b>烏魚子禮盒</b></li>
             </ul>
+
+            <div class="example-box">
+                <strong>🎁 贈品累贈方式說明：</strong><br>
+                EX : 客人消費 8000 元<br>
+                可得 <span class="highlight">5000元滿額贈(雲朵禮盒) + 3000元滿額贈(麻布袋)</span><br>
+                <small style="color: #666;">（※ 金額需超過門檻總和 5000 + 3000 才可累積贈送）</small>
+            </div>
+            
+            <div style="margin-top: 20px; text-align: center; color: var(--gold); font-weight: bold;">
+                ————————-<br>
+                結帳滿 3000 元享 95 折 / 滿 5000 元享 9 折
+            </div>
         </div>
     </div>
 
@@ -159,99 +187,99 @@
 
             <div class="qa-item">
                 <span class="qa-q">Q1. 客人說「有點貴」</span>
-                <div class="qa-fact">事實：價格抗拒 ➔ 推論：價值感不足</div>
+                <div class="qa-fact">事實：顧客對價格有抗拒 ➔ 推論：價值感不足</div>
                 <div class="qa-a">
-                    • 很多客人一開始也這樣覺得，但吃過後會回來，是因為我們烘焙方式不一樣，口感乾淨不油膩。<br>
-                    • 我們像<b>精品堅果</b>，跟一般大量烘焙差異明顯。<br>
-                    • 送禮首選，質感完全不同。
+                    <div>很多客人一開始也會這樣覺得，但吃過之後會回來，主要是因為我們的烘焙方式不一樣，口感比較乾淨不油膩</div>
+                    <div>我們比較像精品堅果，跟一般大量烘焙差異滿明顯的</div>
+                    <div>如果是送禮，很多人會選這個，因為比較有質感</div>
                 </div>
             </div>
 
             <div class="qa-item">
                 <span class="qa-q">Q2. 客人說「我沒有在吃堅果」</span>
-                <div class="qa-fact">事實：非明確需求 ➔ 推論：轉向送禮/體驗</div>
+                <div class="qa-fact">事實：非明確需求 ➔ 推論：可轉送禮或體驗</div>
                 <div class="qa-a">
-                    • 平常會送禮嗎？很多人是買來送人的。<br>
-                    • 可以先吃看看，有些人會被特定口味打到。<br>
-                    • 有些口味像<b>零食</b>，不像傳統堅果那麼無聊。
+                    <div>那你平常會送禮嗎？很多人是買來送人的</div>
+                    <div>可以先吃看看，有些人會被口味打到</div>
+                    <div>有些口味像零食，不像傳統堅果</div>
                 </div>
             </div>
 
             <div class="qa-item">
                 <span class="qa-q">Q3. 客人說「我都吃別牌」</span>
-                <div class="qa-fact">事實：已有習慣 ➔ 推論：引導比較差異</div>
+                <div class="qa-fact">事實：已有習慣 ➔ 推論：可引導比較</div>
                 <div class="qa-a">
-                    • 那你其實很懂吃！一定要吃看看差異。<br>
-                    • 很多客後來選我們是因為真的<b>比較不油</b>。<br>
-                    • 當作「升級版」試試看！
+                    <div>那你其實是懂吃的，可以吃看看差異</div>
+                    <div>很多客人後來回來是因為比較不油</div>
+                    <div>可以當作升級版試試看</div>
                 </div>
             </div>
 
             <div class="qa-item">
-                <span class="qa-q">Q4. 客人說「還好」(試吃後)</span>
+                <span class="qa-q">Q4. 客人說「還好」</span>
                 <div class="qa-fact">事實：沒被打中 ➔ 推論：口味不對</div>
                 <div class="qa-a">
-                    • 我幫你換一個比較有特色的。<br>
-                    • 剛剛那個較清爽，幫你試試<b>重一點</b>的。<br>
-                    • 喜歡甜還是鹹？我重幫你挑。
+                    <div>我幫你換一個比較有特色的</div>
+                    <div>剛剛那個比較清爽，我幫你試重一點的</div>
+                    <div>你喜歡甜還是鹹？我幫你挑</div>
                 </div>
             </div>
 
             <div class="qa-item">
                 <span class="qa-q">Q5. 客人說「我再看看」</span>
-                <div class="qa-fact">事實：猶豫 ➔ 推論：缺乏臨門一腳</div>
+                <div class="qa-fact">事實：猶豫 ➔ 推論：缺理由</div>
                 <div class="qa-a">
-                    • 今天有活動現在拿最划算。<br>
-                    • 我幫你配一組<b>最多人買</b>的組合。<br>
-                    • 很多人都是先帶一包試試。
+                    <div>今天有活動現在拿比較划算</div>
+                    <div>我幫你配一組最多人買的</div>
+                    <div>很多人都是先試一包</div>
                 </div>
             </div>
 
             <div class="qa-item">
-                <span class="qa-q">Q6. 客人問「會不會甜/會胖嗎」</span>
-                <div class="qa-fact">事實：健康疑慮 ➔ 推論：提供安全感</div>
+                <span class="qa-q">Q6. 客人問「會不會很甜／會胖嗎」</span>
+                <div class="qa-fact">事實：健康疑慮 ➔ 推論：需要安全感</div>
                 <div class="qa-a">
-                    • 原味是<b>無糖無鹽</b>。<br>
-                    • 一天適量攝取是很健康的。<br>
-                    • 烘焙方式很乾淨，負擔比較小。
+                    <div>原味是無糖無鹽</div>
+                    <div>一天適量吃是健康的</div>
+                    <div>烘焙方式比較乾淨</div>
                 </div>
             </div>
 
             <div class="qa-item">
                 <span class="qa-q">Q7. 客人說「我過敏」</span>
-                <div class="qa-fact">事實：真風險 ➔ 推論：絕對不能推</div>
+                <div class="qa-fact">事實：真風險 ➔ 推論：不能推</div>
                 <div class="qa-a">
-                    • 我們的產品都有堅果成分，<b>建議以安全為主喔</b>！
+                    <div>我們產品都有堅果成分，建議以安全為主</div>
                 </div>
             </div>
 
             <div class="qa-item">
                 <span class="qa-q">Q8. 客人說「看起來還好」</span>
-                <div class="qa-fact">事實：吸睛度不足 ➔ 推論：需轉送禮情境</div>
+                <div class="qa-fact">事實：包裝吸引力不足 ➔ 推論：需轉送禮情境</div>
                 <div class="qa-a">
-                    • 禮盒組裝起來非常有質感。<br>
-                    • 很多人送客戶或長輩，面子十足。<br>
-                    • 這個隨手包是設計給日常方便吃的。
+                    <div>禮盒會比較有質感</div>
+                    <div>很多人送客戶或長輩</div>
+                    <div>這個是日常吃的</div>
                 </div>
             </div>
 
             <div class="qa-item">
                 <span class="qa-q">Q9. 客人問「有沒有推薦」</span>
-                <div class="qa-fact">事實：購買意願高 ➔ 推論：成交關鍵</div>
+                <div class="qa-fact">事實：有購買意願 ➔ 推論：成交機會高</div>
                 <div class="qa-a">
-                    • 第一次建議帶這組。<br>
-                    • 這是我們目前<b>賣最好</b>的口味。<br>
-                    • 我直接幫你配熱銷組！
+                    <div>第一次建議這組</div>
+                    <div>這是賣最好的</div>
+                    <div>我幫你配</div>
                 </div>
             </div>
 
             <div class="qa-item">
                 <span class="qa-q">Q10. 客人買很多但猶豫</span>
-                <div class="qa-fact">事實：高單價猶豫 ➔ 推論：需要理由合理化</div>
+                <div class="qa-fact">事實：高單客 ➔ 推論：需要合理化</div>
                 <div class="qa-a">
-                    • 這樣搭活動真的很划算。<br>
-                    • 一部分送禮、一部分自己吃剛好。<br>
-                    • 算下來這組<b>平均單價最低</b>！
+                    <div>這樣搭很划算</div>
+                    <div>可以送禮也可以自己吃</div>
+                    <div>這組最划算</div>
                 </div>
             </div>
 
@@ -261,7 +289,7 @@
 </div>
 
 <footer>
-    LOVIN INTERNAL TRAINING SYSTEM v2.4<br>
+    LOVIN INTERNAL TRAINING SYSTEM v2.7<br>
     打造堅果界的精品專賣店
 </footer>
 
