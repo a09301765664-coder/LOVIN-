@@ -6,7 +6,6 @@
     <title>LOVIN | 80週年旗艦銷售百科</title>
     <style>
         :root {
-            /* 青提奶霜精品色票 */
             --milk-cream: #FBF2E2;   
             --soft-yellow: #FFEFD7; 
             --soft-peach: #F6DDCE; 
@@ -37,12 +36,13 @@
         .promo-tag { background: var(--gold); color: white; display: inline-block; padding: 2px 12px; border-radius: 50px; font-size: 0.8rem; margin-top: 8px; }
 
         nav {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px;
         }
 
         nav button {
-            padding: 12px; border: 1.5px solid var(--sage-green); background: var(--white);
-            color: var(--sage-green); border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;
+            padding: 10px 5px; border: 1.5px solid var(--sage-green); background: var(--white);
+            color: var(--sage-green); border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;
+            font-size: 0.85rem;
         }
 
         nav button.active { background: var(--deep-sage); color: var(--white); border-color: var(--deep-sage); }
@@ -59,6 +59,7 @@
         }
 
         h2 { color: var(--gold); border-left: 5px solid var(--soft-peach); padding-left: 15px; margin-top: 0; font-size: 1.3rem; }
+        h3 { color: var(--deep-sage); font-size: 1.1rem; margin-top: 20px; border-bottom: 1px solid var(--soft-peach); display: inline-block; }
         
         .qa-item { margin-bottom: 20px; border-bottom: 1px solid var(--milk-cream); padding-bottom: 15px; }
         .qa-q { color: var(--gold); font-weight: bold; font-size: 1.05rem; display: block; margin-bottom: 5px; }
@@ -79,6 +80,10 @@
         .gift-list b { color: var(--gold); text-align: right; }
         
         .example-box { background: var(--soft-yellow); padding: 15px; border-radius: 12px; font-size: 0.9rem; margin-top: 15px; border: 1px solid var(--soft-peach); }
+        .hr-line { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
+        
+        .knowledge-item { margin-bottom: 25px; }
+        .knowledge-tag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-weight: bold; margin-bottom: 5px; }
 
         footer { text-align: center; padding: 30px; font-size: 0.75rem; color: var(--sage-green); }
     </style>
@@ -93,8 +98,11 @@
 <nav>
     <button class="active" onclick="switchTab('brand')">品牌實力</button>
     <button onclick="switchTab('promo')">促銷活動</button>
-    <button onclick="switchTab('gift')">滿額累贈</button>
+    <button onclick="switchTab('gift')">活動如下</button>
     <button onclick="switchTab('qa')">應對話術</button>
+    <button onclick="switchTab('faq')">常見問題</button>
+    <button onclick="switchTab('flavors')">口味介紹</button>
+    <button onclick="switchTab('knowledge')">堅果知識</button>
 </nav>
 
 <div class="container">
@@ -133,13 +141,22 @@
 
     <div id="promo" class="section">
         <div class="card">
-            <h2>隨手包系列</h2>
+            <h2>隨手包系列方案</h2>
             <table class="promo-table">
                 <tr><td>方案</td><td>單一口味</td><td>混搭口味</td></tr>
                 <tr><td>10 入</td><td class="price">$569</td><td class="price">$669</td></tr>
                 <tr><td>20 入</td><td class="price">$999</td><td class="price">$1099</td></tr>
                 <tr><td>40 入</td><td class="price">$1799</td><td class="price">$1899</td></tr>
             </table>
+            
+            <h3 style="margin-top:25px;">🔥 指定即期優惠</h3>
+            <p style="font-size: 0.85rem; color: var(--accent-red); margin-bottom: 5px;">指定口味：太妃、摩卡、椒鹽、焦糖、鱈魚、芥末⋯等 (效期剩6個月內)</p>
+            <div class="power-item" style="background: #FFF5F5; border-left-color: var(--accent-red);">
+                • <strong>20入組：</strong> 原價 $1099 ➔ <span class="highlight">特價 $899</span><br>
+                <small>(需包含 10 包以上即期口味)</small><br><br>
+                • <strong>40入組：</strong> 原價 $1899 ➔ <span class="highlight">特價 $1699</span><br>
+                <small>(需包含 20 包以上即期口味)</small>
+            </div>
         </div>
         <div class="card">
             <h2>📦 袋裝 / 罐裝系列</h2>
@@ -172,11 +189,6 @@
                 EX : 客人消費 8000 元<br>
                 可得 <span class="highlight">5000元滿額贈(雲朵禮盒) + 3000元滿額贈(麻布袋)</span><br>
                 <small style="color: #666;">（※ 金額需超過門檻總和 5000 + 3000 才可累積贈送）</small>
-            </div>
-            
-            <div style="margin-top: 20px; text-align: center; color: var(--gold); font-weight: bold;">
-                ————————-<br>
-                結帳滿 3000 元享 95 折 / 滿 5000 元享 9 折
             </div>
         </div>
     </div>
@@ -282,14 +294,177 @@
                     <div>這組最划算</div>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <div id="faq" class="section">
+        <div class="card">
+            <h2>常見問題 (FAQ)</h2>
+            
+            <div class="qa-item">
+                <span class="qa-q">Q1：哪些產品是純素的？</span>
+                <div class="qa-a">
+                    • <b>純素產品：</b>綜合堅果、綜合纖果、綜合臻果。<br>
+                    • <b>調味系列：</b>含五辛素或奶蛋素（視為葷食）。
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-q">Q2：堅果有加鹽或糖嗎？</span>
+                <div class="qa-a">
+                    • <b>原味系列：</b>（綜合堅果、纖果）皆無糖無鹽、完全無調味。<br>
+                    • <b>調味系列：</b>僅為風味處理加入少量糖或鹽。
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-q">Q3：產品會不會引起過敏？</span>
+                <div class="qa-a">
+                    • 所有產品皆含堅果，過敏者需避免食用。過敏資訊標示於包裝背面左下角。
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-q">Q4：堅果怎麼吃最推薦？</span>
+                <div class="qa-a">
+                    • 直接當點心，或加入沙拉、優格、早餐碗、烘焙與便當中。
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-q">Q5：保存期限有多久？</span>
+                <div class="qa-a">
+                    • 採鮮萃技術與氮氣填充。未開封可保存 <b>12 個月</b>，開封後建議冷藏。
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-q">Q6：想減肥的人可以吃嗎？</span>
+                <div class="qa-a">
+                    • 可以。富含好油與膳食纖維，飽足感高且低升糖。建議每日食用一包隨手包。
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-q">Q7：開封後怎麼保存最好？</span>
+                <div class="qa-a">
+                    • 請務必冷藏保存，隨手包未開封可常溫存放 12 個月。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="flavors" class="section">
+        <div class="card">
+            <h2>隨手包口味介紹</h2>
+            
+            <p><strong>🧀 起司夏威夷豆｜帕馬森鹹香</strong><br>
+            🗣️「這款是用帕馬森起司粉調味的，鹹香濃郁，吃起來超像起司爆米花！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🧂 椒鹽夏威夷豆｜鹹酥雞口感</strong><br>
+            🗣️「這款超像在吃鹹酥雞！無油健康版，嘴饞又怕胖客人的最愛！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🍬 太妃糖夏威夷豆｜甜香奶感</strong><br>
+            🗣️「甜甜奶香不會膩，像甜點一樣香，是下午茶女神款！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🧁 焦糖奶油杏仁條｜法式甜點感</strong><br>
+            🗣️「手工製作切成小條，香脆可口，小包裝送人很有質感！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🍫 黑鑽可可杏仁｜獨家脆皮</strong><br>
+            🗣️「外皮像餅乾一樣脆，撒上微苦可可粉，香氣十足不甜膩，文青最愛！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🌶 芥末杏仁｜衝鼻過癮</strong><br>
+            🗣️「嗆辣感爽快但不辣嘴，回購率第一名的重口味選擇！」</p>
+            <hr class="hr-line">
+
+            <p><strong>☕ 摩卡可可腰果｜大人系下午茶</strong><br>
+            🗣️「咖啡與可可雙重香氣，甜度不高，濃郁大人味！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🧋 珍珠奶茶夏威夷豆｜台灣特色</strong><br>
+            🗣️「有黑糖香氣且口感軟糯，國外客回購首選！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🍗 雞排腰果｜在地台味</strong><br>
+            🗣️「鹹甜雞排味，非常特別的在地創意口味！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🤍 綜合堅果｜原味首選（純素）</strong><br>
+            🗣️「5種堅果無調味，最健康，健身族群必選！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🩷 綜合纖果｜代謝黃金比（純素）</strong><br>
+            🗣️「堅果配果乾，層次豐富，幫助排便促進代謝！」</p>
+            <hr class="hr-line">
+
+            <p><strong>🥭 綜合臻果｜清新果香（純素）</strong><br>
+            ✔ 黑豆、夏威夷豆、蔓越莓、芒果乾</p>
+        </div>
+    </div>
+
+    <div id="knowledge" class="section">
+        <div class="card">
+            <h2>堅果知識百科</h2>
+            
+            <div class="knowledge-item">
+                <span class="knowledge-tag" style="background:#FCE4EC;">❤️ 蔓越莓｜美國</span><br>
+                <small>• 特色：整粒鮮採、酸度高、甜度低、接近原味。<br>
+                • 營養：維他命C、花青素、護泌尿道。<br>
+                • 比較：市售多為切片且加糖過重。</small>
+            </div>
+
+            <div class="knowledge-item">
+                <span class="knowledge-tag" style="background:#F3E5F5;">💜 葡萄乾｜智利</span><br>
+                <small>• 特色：無籽大顆飽滿、不黏手、糖份低。<br>
+                • 營養：鐵、鈣、多酚，補血抗疲勞。<br>
+                • 比較：美國產地較小粒且黏手甜膩。</small>
+            </div>
+
+            <div class="knowledge-item">
+                <span class="knowledge-tag" style="background:#FFF3E0;">🤍 腰果｜越南(安迪日商)</span><br>
+                <small>• 特色：清脆奶香、色澤潔白、品質極穩。<br>
+                • 營養：強化骨骼、控糖護腦。<br>
+                • 堅持：僅用日商專供出口等級，非一般來源。</small>
+            </div>
+
+            <div class="knowledge-item">
+                <span class="knowledge-tag" style="background:#E1F5FE;">🩵 夏威夷果｜澳洲</span><br>
+                <small>• 特色：頂級1號果、綿密口感、手工剝殼。<br>
+                • 市佔：LOVIN 供應全台約 2/3 夏豆市場。<br>
+                • 比較：南非產果實較小且口感偏硬。</small>
+            </div>
+
+            <div class="knowledge-item">
+                <span class="knowledge-tag" style="background:#FFFDE7;">💛 核桃｜美國</span><br>
+                <small>• 特色：完整半顆、無油耗苦澀、長輩友善。<br>
+                • 營養：健腦抗老、預防阿茲海默。<br>
+                • 比較：市售多碎小且苦味重。</small>
+            </div>
+
+            <div class="knowledge-item">
+                <span class="knowledge-tag" style="background:#EFEBE9;">🤎 胡桃｜美國(綠谷)</span><br>
+                <small>• 特色：1/2 猛瑪象級、尾韻帶可可香。<br>
+                • 營養：最強抗氧化堅果，對抗自由基。</small>
+            </div>
+
+            <div class="knowledge-item">
+                <span class="knowledge-tag" style="background:#E8F5E9;">🩵 杏仁粒｜美國藍鑽</span><br>
+                <small>• 特色：全球第一大廠、酥脆風味濃郁。<br>
+                • 營養：鈣含量堅果之冠、維生素E美肌。<br>
+                • 比較：市售杏仁易乾澀風味弱。</small>
+            </div>
         </div>
     </div>
 
 </div>
 
 <footer>
-    LOVIN INTERNAL TRAINING SYSTEM v2.7<br>
+    LOVIN INTERNAL TRAINING SYSTEM v2.8<br>
     打造堅果界的精品專賣店
 </footer>
 
