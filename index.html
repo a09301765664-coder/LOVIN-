@@ -3,185 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOVIN | 青提奶霜精品百科</title>
+    <title>LOVIN | 80週年旗艦銷售百科</title>
     <style>
         :root {
-            /* 根據圖片提取的青提奶霜色票 */
-            --milk-cream: #FBF2E2;   /* 奶油白 (背景) */
-            --soft-green-1: #FFEFD7; /* 奶霜黃 (點綴) - 註：對應圖中淺色 */
-            --soft-green-2: #F6DDCE; /* 蜜桃粉綠 (點綴) */
-            --sage-green: #BBB2A2;   /* 灰綠色 (文字/邊框) */
-            
-            /* 品牌精品色 */
-            --deep-sage: #8A9A8E;    /* 深色調 (主要標題) */
-            --gold: #B8975A;         /* 精品金 */
-            --white: #FFFFFF;        /* 純白 (卡片內部) */
-            --accent: #D32F2F;       /* 強調色 */
+            /* 青提奶霜精品色票 */
+            --milk-cream: #FBF2E2;   
+            --soft-yellow: #FFEFD7; 
+            --soft-peach: #F6DDCE; 
+            --sage-green: #BBB2A2;   
+            --deep-sage: #8A9A8E;    
+            --gold: #B8975A;         
+            --white: #FFFFFF;        
+            --accent-red: #D32F2F;   
         }
 
         body {
             font-family: "PingFang TC", "STHeiti", sans-serif;
             background-color: var(--milk-cream);
-            color: var(--sage-green);
+            color: var(--deep-sage);
             margin: 0; padding: 0;
             line-height: 1.6;
         }
 
-        /* Header 視覺優化 */
         header {
             background: var(--white);
-            padding: 30px 20px;
+            padding: 25px 20px;
             text-align: center;
-            border-bottom: 4px solid var(--soft-green-2);
+            border-bottom: 4px solid var(--soft-peach);
             position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
 
-        .brand-logo { 
-            font-size: 2.2rem; 
-            letter-spacing: 6px; 
-            margin: 0; 
-            font-weight: 900; 
-            color: var(--deep-sage);
-        }
-        .brand-sub { 
-            font-size: 0.8rem; 
-            color: var(--gold); 
-            margin-top: 8px; 
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
+        .brand-logo { font-size: 2.2rem; letter-spacing: 6px; margin: 0; font-weight: 900; color: var(--deep-sage); }
+        .promo-tag { background: var(--gold); color: white; display: inline-block; padding: 2px 12px; border-radius: 50px; font-size: 0.8rem; margin-top: 8px; }
 
-        /* Navigation 切換鈕優化 */
         nav {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding: 20px;
-            background: var(--milk-cream);
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px;
         }
 
         nav button {
-            padding: 14px;
-            border: 1px solid var(--sage-green);
-            background: var(--white);
-            color: var(--sage-green);
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            padding: 12px; border: 1.5px solid var(--sage-green); background: var(--white);
+            color: var(--sage-green); border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;
         }
 
-        nav button.active {
-            background: var(--deep-sage);
-            color: var(--white);
-            border-color: var(--deep-sage);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(138, 154, 142, 0.3);
-        }
+        nav button.active { background: var(--deep-sage); color: var(--white); border-color: var(--deep-sage); }
 
-        /* Container & Sections */
-        .container { padding: 0 20px 60px; max-width: 600px; margin: auto; }
-        .section { display: none; animation: slideUp 0.5s ease; }
+        .container { padding: 0 15px 40px; max-width: 600px; margin: auto; }
+        .section { display: none; animation: fadeIn 0.4s; }
         .section.active { display: block; }
 
-        @keyframes slideUp { 
-            from { opacity: 0; transform: translateY(15px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
-        /* Card 精品化優化 */
         .card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 24px rgba(187, 178, 162, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: var(--white); border-radius: 20px; padding: 25px;
+            margin-bottom: 25px; box-shadow: 0 8px 20px rgba(187, 178, 162, 0.15);
         }
 
-        h2 { 
-            color: var(--gold); 
-            border-left: 5px solid var(--soft-green-2); 
-            padding-left: 15px; 
-            margin-top: 0; 
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-        }
-
-        /* 內容樣式優化 */
-        .highlight { color: var(--accent); font-weight: bold; }
+        h2 { color: var(--gold); border-left: 5px solid var(--soft-peach); padding-left: 15px; margin-top: 0; font-size: 1.3rem; }
         
-        .quote-box { 
-            background: var(--milk-cream); 
-            padding: 18px; 
-            border-radius: 12px; 
-            font-style: italic; 
-            border-left: 4px solid var(--gold); 
-            margin: 15px 0; 
-            font-size: 0.95rem;
-            color: var(--deep-sage);
-        }
+        /* 品牌攻略樣式 */
+        .power-item { background: var(--soft-yellow); padding: 15px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .highlight { color: var(--accent-red); font-weight: bold; }
+        .client-tag { display: inline-block; background: var(--milk-cream); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin: 2px; border: 1px solid var(--soft-peach); }
 
-        /* 銷售階梯表格優化 */
-        .promo-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; margin-top: 10px; }
-        .promo-table td { 
-            padding: 15px; 
-            background: var(--white);
-            border-bottom: 1px solid var(--milk-cream);
-            font-size: 0.95rem;
-        }
-        .promo-table tr td:first-child { border-radius: 10px 0 0 10px; font-weight: bold; }
-        .promo-table tr td:last-child { border-radius: 0 10px 10px 0; text-align: right; }
-        .promo-table .best-row td { background: var(--soft-green-1); color: var(--deep-sage); }
+        /* 活動表格 */
+        .promo-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .promo-table td { padding: 12px 5px; border-bottom: 1px solid var(--milk-cream); font-size: 0.95rem; }
+        .price { font-weight: bold; color: var(--accent-red); text-align: right; }
 
-        /* 產品列表優化 */
-        .product-item { 
-            margin-bottom: 25px; 
-            padding-bottom: 20px; 
-            border-bottom: 1px solid var(--milk-cream); 
-        }
-        .product-title { 
-            display: flex; 
-            align-items: center; 
-            font-weight: bold; 
-            gap: 10px; 
-            font-size: 1.15rem; 
-            color: var(--deep-sage);
-        }
+        /* 滿額贈 */
+        .gift-list { list-style: none; padding: 0; }
+        .gift-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #eee; font-size: 0.9rem; }
+        .gift-list b { color: var(--gold); }
 
-        footer { 
-            text-align: center; 
-            padding: 40px; 
-            color: var(--sage-green); 
-            font-size: 0.8rem; 
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
-
-        /* 小標籤 */
-        .badge {
-            display: inline-block;
-            background: var(--soft-green-2);
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            margin-left: 10px;
-        }
+        footer { text-align: center; padding: 30px; font-size: 0.75rem; color: var(--sage-green); }
     </style>
 </head>
 <body>
 
 <header>
     <h1 class="brand-logo">LOVIN</h1>
-    <div class="brand-sub">SINCE 1947 | THE NUT ARTISAN</div>
+    <div class="promo-tag">🌸 80週年旗艦品牌百科</div>
 </header>
 
 <nav>
     <button class="active" onclick="switchTab('brand')">品牌實力</button>
-    <button onclick="switchTab('products')">產品百科</button>
-    <button onclick="switchTab('sales')">成交攻略</button>
+    <button onclick="switchTab('promo')">4月促銷</button>
+    <button onclick="switchTab('gift')">滿額累贈</button>
     <button onclick="switchTab('qa')">應對話術</button>
 </nav>
 
@@ -189,98 +96,107 @@
     
     <div id="brand" class="section active">
         <div class="card">
-            <h2>為什麼選我們？<span class="badge">信任背書</span></h2>
-            <p><strong>同興實業 80 年背景：</strong> 掌握台灣 80% 堅果市佔。</p>
-            <ul>
-                <li><span class="highlight">夏威夷豆霸主：</span>全台每 3 顆就有 2 顆出自我們。</li>
-                <li><span class="highlight">頂級通路選用：</span>晶華、老爺、文華東方指定合作。</li>
-                <li><span class="highlight">AI 烘粹技術：</span>第五代 AI 控溫，提升新鮮度 20%。</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h2>三步試吃成交法</h2>
-            <p><strong>1. 微笑主動：</strong>「全台最大堅果進口商請您試吃！」</p>
-            <p><strong>2. 亮點切入：</strong>「這是澳洲 1 號等級，很多飯店都用我們的。」</p>
-            <p><strong>3. 感性開場：</strong>「很多藝人私下都買這款蔓越莓，一定要試試。」</p>
+            <h2>LOVIN 堅果銷售攻略</h2>
+            <div class="power-item">
+                <strong>💎 全台最大堅果進口商「同興實業」</strong><br>
+                母公司 80 年歷史，<span class="highlight">全台市佔最高 9 成</span>。<br>
+                🔥 市面上 3 顆夏威夷豆，有 2 顆來自我們家！
+            </div>
+            
+            <p style="font-size: 0.9rem;"><strong>合作夥伴 (B2B 權威)：</strong></p>
+            <div style="margin-bottom: 15px;">
+                <span class="client-tag">萬歲牌</span><span class="client-tag">吳寶春</span><span class="client-tag">亞尼克</span>
+                <span class="client-tag">晶華飯店</span><span class="client-tag">文華東方</span><span class="client-tag">詩特莉</span>
+                <span class="client-tag">天仁茗茶</span><span class="client-tag">紅布朗</span>
+            </div>
+
+            <div class="power-item" style="background: var(--milk-cream);">
+                <strong>💡 核心差異點：</strong><br>
+                不同品牌等級差很多！別人選便宜原料（油耗味重）；<br>
+                <span class="highlight">LOVIN 堅持選用最高等級原料</span>，成本雖高，但吃得出新鮮差異。
+            </div>
+
+            <p style="font-size: 0.9rem;">📍 <strong>門市據點：</strong><br>
+            信義 A8 | 台北車站 | 中山誠品 | 松菸誠品</p>
         </div>
     </div>
 
-    <div id="products" class="section">
+    <div id="promo" class="section">
         <div class="card">
-            <h2>經典原味系列</h2>
-            <div class="product-item">
-                <div class="product-title">🩵 夏威夷果 <span class="badge">澳洲 1號</span></div>
-                <div class="quote-box">「奶黃色澤、口感綿密，全台 2/3 的夏豆都來自我們家！」</div>
-            </div>
-            <div class="product-item">
-                <div class="product-title">🤍 腰果 <span class="badge">日本出口級</span></div>
-                <div class="quote-box">「專供日本市場，新鮮白皙帶有淡奶香，品質極穩。」</div>
-            </div>
-        </div>
-        <div class="card">
-            <h2>明星調味系列</h2>
-            <div class="product-item">
-                <div class="product-title">🧀 起司夏威夷豆</div>
-                <div class="quote-box">「帕馬森起司鹹香，超像起司爆米花，男生小孩必帶！」</div>
-            </div>
-            <div class="product-item">
-                <div class="product-title">🍫 黑鑽可可杏仁</div>
-                <div class="quote-box">「外皮像餅乾脆，微苦可可不甜膩，文青客最愛。」</div>
-            </div>
-        </div>
-    </div>
-
-    <div id="sales" class="section">
-        <div class="card">
-            <h2>銷售階梯方案</h2>
+            <h2>隨手包系列</h2>
             <table class="promo-table">
-                <tr><td>10 包方案</td><td>$569 <small>(8折)</small></td></tr>
-                <tr class="best-row"><td>20 包方案 <span class="highlight">★</span></td><td>$999 <small>(平均$50/包)</small></td></tr>
-                <tr><td>40 包方案</td><td>$1699 <small>(最強6折)</small></td></tr>
+                <tr><td>方案</td><td>單一口味</td><td>混搭口味</td></tr>
+                <tr><td>10 入</td><td class="price">$569</td><td class="price">$669</td></tr>
+                <tr><td>20 入</td><td class="price">$999</td><td class="price">$1099</td></tr>
+                <tr><td>40 入</td><td class="price">$1799</td><td class="price">$1899</td></tr>
             </table>
-            <div class="quote-box">
-                <strong>逼單話術：</strong> 「買 20 包最划算，我額外加碼送你 4 小包迷你纖果 + 電風扇！」
-            </div>
         </div>
+
         <div class="card">
-            <h2>滿額贈品攻略</h2>
-            <ul>
-                <li><strong>滿 3000：</strong>文青麻布袋 (價值 $799)</li>
-                <li><strong>滿 5000：</strong>雲朵禮盒 (價值 $580) + <span class="highlight">免運寄到家</span></li>
+            <h2>🔥 即期限定 (效期&lt;6個月)</h2>
+            <table class="promo-table">
+                <tr><td>20 入折扣價 (需含10包即期)</td><td class="price">$899</td></tr>
+                <tr><td>40 入折扣價 (需含20包即期)</td><td class="price">$1699</td></tr>
+            </table>
+            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">*限定口味：太妃、摩卡、椒鹽、焦糖、鱈魚、芥末等</p>
+        </div>
+
+        <div class="card">
+            <h2>📦 袋裝 / 罐裝系列</h2>
+            <p style="font-weight: bold; text-align: center; font-size: 1.2rem; color: var(--accent-red);">全品項 買四送一</p>
+        </div>
+
+        <div class="card">
+            <h2>✨ 結帳大宗折扣</h2>
+            <p>• 滿 <strong>$3,000</strong> → 享 <strong>95 折</strong></p>
+            <p>• 滿 <strong>$5,000</strong> → 享 <strong>9 折</strong></p>
+        </div>
+    </div>
+
+    <div id="gift" class="section">
+        <div class="card">
+            <h2>4月滿額禮 (可累贈)</h2>
+            <ul class="gift-list">
+                <li><span>$500</span> <b>試吃包/茶包 2入</b></li>
+                <li><span>$1,000</span> <b>試吃包 4入</b></li>
+                <li><span>$1,200</span> <b>蛋捲 2隻</b></li>
+                <li><span>$2,000</span> <b>即期隨手包 4入</b></li>
+                <li><span>$3,000</span> <b>麻布袋+罐裝腰果+核桃</b></li>
+                <li><span>$5,000</span> <b>雲朵禮盒 6入</b></li>
+                <li><span>$10,000</span> <b>12入隨手包中禮盒</b></li>
+                <li><span>$20,000</span> <b>烏魚子禮盒</b></li>
             </ul>
+            <div style="background: var(--soft-yellow); padding: 12px; border-radius: 10px; font-size: 0.85rem; margin-top: 15px;">
+                <strong>累贈範例：</strong> 消費 $8,000 可拿「$5,000雲朵禮盒」+「$3,000麻布袋組」。(需滿足門檻總和)
+            </div>
         </div>
     </div>
 
     <div id="qa" class="section">
         <div class="card">
-            <h2>應對話術大補帖</h2>
-            <h3>💬 客人嫌貴？</h3>
-            <p>「這包雖然單價高一點，但平均一天才 44 元，比手搖飲還便宜，卻能換到一整天的健康油脂與營養！」</p>
+            <h2>專業應對話術</h2>
+            <p><strong>Q：為什麼你們比別人貴？</strong><br>
+            A：「因為我們是全台最大的進口商，最頂級的堅果原料我們都優先留給自家品牌 LOVIN。像吳寶春、晶華飯店也是用我們的原料，但 LOVIN 的等級更高，吃過就知道沒有油耗味！」</p>
             
-            <h3>💬 不吃堅果？</h3>
-            <p>「試試黑鑽可可！它吃起來像巧克力餅乾，很多不吃堅果的小朋友和客人都被這款圈粉。」</p>
-
-            <h3>💬 包裝太簡單？</h3>
-            <p>「這是精品極簡設計，內行人才懂的質感燙金。送禮送的是品質，不是花俏的盒子。」</p>
+            <p><strong>Q：即期品划算嗎？</strong><br>
+            A：「非常划算！像這款 20 入組，只要含 10 包指定口味，整組直接折到 $899，平均一包不到 45 元！」</p>
         </div>
     </div>
 
 </div>
 
 <footer>
-    LOVIN INTERNAL KNOWLEDGE BASE<br>
-    © 2026 LOVIN PREMIUM NUTS
+    LOVIN INTERNAL TRAINING SYSTEM v2.2<br>
+    打造堅果界的精品專賣店
 </footer>
 
 <script>
     function switchTab(tabId) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-        
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
         event.currentTarget.classList.add('active');
-        
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        window.scrollTo(0,0);
     }
 </script>
 
