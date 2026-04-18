@@ -7,201 +7,280 @@
     <style>
         :root {
             /* 根據圖片提取的青提奶霜色票 */
-            --green-1: #A3C1AD; /* 深青提色 */
-            --green-2: #B8D4B0; /* 中青提色 */
-            --green-3: #D9EABF; /* 淺草綠 */
-            --green-4: #E8F1D4; /* 奶霜綠 */
-            --cream-white: #FCFDF7; /* 奶油白 */
-            --gold-touch: #C5A059; /* 精品金 */
-            --text-main: #4A5D4E; /* 深綠文字 */
+            --milk-cream: #FBF2E2;   /* 奶油白 (背景) */
+            --soft-green-1: #FFEFD7; /* 奶霜黃 (點綴) - 註：對應圖中淺色 */
+            --soft-green-2: #F6DDCE; /* 蜜桃粉綠 (點綴) */
+            --sage-green: #BBB2A2;   /* 灰綠色 (文字/邊框) */
+            
+            /* 品牌精品色 */
+            --deep-sage: #8A9A8E;    /* 深色調 (主要標題) */
+            --gold: #B8975A;         /* 精品金 */
+            --white: #FFFFFF;        /* 純白 (卡片內部) */
+            --accent: #D32F2F;       /* 強調色 */
         }
 
         body {
-            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-            background-color: var(--green-4);
-            color: var(--text-main);
+            font-family: "PingFang TC", "STHeiti", sans-serif;
+            background-color: var(--milk-cream);
+            color: var(--sage-green);
             margin: 0; padding: 0;
-            display: flex; flex-direction: column; align-items: center;
+            line-height: 1.6;
         }
 
-        /* Header */
+        /* Header 視覺優化 */
         header {
-            width: 100%;
-            background-color: var(--cream-white);
-            padding: 30px 0;
+            background: var(--white);
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 2px solid var(--green-3);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            border-bottom: 4px solid var(--soft-green-2);
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
 
-        .logo { font-size: 2.2rem; font-weight: 900; letter-spacing: 6px; margin: 0; color: var(--green-1); }
-        .sub-logo { font-size: 0.8rem; letter-spacing: 2px; color: var(--gold-touch); margin-top: 5px; }
+        .brand-logo { 
+            font-size: 2.2rem; 
+            letter-spacing: 6px; 
+            margin: 0; 
+            font-weight: 900; 
+            color: var(--deep-sage);
+        }
+        .brand-sub { 
+            font-size: 0.8rem; 
+            color: var(--gold); 
+            margin-top: 8px; 
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
 
-        /* Navigation */
+        /* Navigation 切換鈕優化 */
         nav {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
-            width: 90%; max-width: 600px; padding: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 20px;
+            background: var(--milk-cream);
         }
 
         nav button {
-            background: var(--cream-white);
-            border: 1.5px solid var(--green-2);
-            padding: 12px; border-radius: 12px;
-            color: var(--text-main); font-weight: bold;
-            cursor: pointer; transition: 0.3s;
+            padding: 14px;
+            border: 1px solid var(--sage-green);
+            background: var(--white);
+            color: var(--sage-green);
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        nav button.active { background: var(--green-2); color: white; border-color: var(--green-1); }
+        nav button.active {
+            background: var(--deep-sage);
+            color: var(--white);
+            border-color: var(--deep-sage);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(138, 154, 142, 0.3);
+        }
 
-        /* Main Content */
-        .container { width: 90%; max-width: 600px; padding-bottom: 50px; }
-        .content-section { display: none; animation: slideUp 0.4s ease-out; }
-        .content-section.active { display: block; }
+        /* Container & Sections */
+        .container { padding: 0 20px 60px; max-width: 600px; margin: auto; }
+        .section { display: none; animation: slideUp 0.5s ease; }
+        .section.active { display: block; }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(15px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
 
+        /* Card 精品化優化 */
         .card {
-            background: var(--cream-white);
+            background: var(--white);
             border-radius: 20px;
-            padding: 20px; margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(163, 193, 173, 0.15);
-            border: 1px solid rgba(255,255,255,0.8);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(187, 178, 162, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        h2 { font-size: 1.2rem; color: var(--green-1); border-left: 4px solid var(--green-2); padding-left: 10px; margin-top: 0; }
+        h2 { 
+            color: var(--gold); 
+            border-left: 5px solid var(--soft-green-2); 
+            padding-left: 15px; 
+            margin-top: 0; 
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        /* 內容樣式優化 */
+        .highlight { color: var(--accent); font-weight: bold; }
         
-        .script-box { background: var(--green-4); padding: 15px; border-radius: 12px; font-size: 0.95rem; margin-top: 10px; line-height: 1.7; border: 1px solid var(--green-3); }
-        .highlight { color: #D32F2F; font-weight: bold; }
+        .quote-box { 
+            background: var(--milk-cream); 
+            padding: 18px; 
+            border-radius: 12px; 
+            font-style: italic; 
+            border-left: 4px solid var(--gold); 
+            margin: 15px 0; 
+            font-size: 0.95rem;
+            color: var(--deep-sage);
+        }
 
-        /* Product List */
-        .product-item { padding: 15px 0; border-bottom: 1px solid var(--green-4); }
-        .product-item:last-child { border: none; }
-        .product-tag { font-size: 0.75rem; background: var(--green-3); padding: 2px 8px; border-radius: 4px; margin-left: 10px; }
+        /* 銷售階梯表格優化 */
+        .promo-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; margin-top: 10px; }
+        .promo-table td { 
+            padding: 15px; 
+            background: var(--white);
+            border-bottom: 1px solid var(--milk-cream);
+            font-size: 0.95rem;
+        }
+        .promo-table tr td:first-child { border-radius: 10px 0 0 10px; font-weight: bold; }
+        .promo-table tr td:last-child { border-radius: 0 10px 10px 0; text-align: right; }
+        .promo-table .best-row td { background: var(--soft-green-1); color: var(--deep-sage); }
 
-        /* Promo Table */
-        .promo-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .promo-table td { padding: 12px 8px; border-bottom: 1px solid var(--green-4); font-size: 0.9rem; }
-        .promo-table tr:last-child { background-color: var(--green-4); font-weight: bold; }
+        /* 產品列表優化 */
+        .product-item { 
+            margin-bottom: 25px; 
+            padding-bottom: 20px; 
+            border-bottom: 1px solid var(--milk-cream); 
+        }
+        .product-title { 
+            display: flex; 
+            align-items: center; 
+            font-weight: bold; 
+            gap: 10px; 
+            font-size: 1.15rem; 
+            color: var(--deep-sage);
+        }
 
-        footer { font-size: 0.75rem; color: var(--green-1); padding: 20px; opacity: 0.7; }
+        footer { 
+            text-align: center; 
+            padding: 40px; 
+            color: var(--sage-green); 
+            font-size: 0.8rem; 
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* 小標籤 */
+        .badge {
+            display: inline-block;
+            background: var(--soft-green-2);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 class="logo">LOVIN</h1>
-    <div class="sub-logo">PREMIUM NUTS | SINCE 1947</div>
+    <h1 class="brand-logo">LOVIN</h1>
+    <div class="brand-sub">SINCE 1947 | THE NUT ARTISAN</div>
 </header>
 
 <nav>
-    <button class="active" onclick="showTab('brand')">品牌實力</button>
-    <button onclick="showTab('products')">產品百科</button>
-    <button onclick="showTab('sales')">成交攻略</button>
-    <button onclick="showTab('qa')">應對話術</button>
+    <button class="active" onclick="switchTab('brand')">品牌實力</button>
+    <button onclick="switchTab('products')">產品百科</button>
+    <button onclick="switchTab('sales')">成交攻略</button>
+    <button onclick="switchTab('qa')">應對話術</button>
 </nav>
 
 <div class="container">
     
-    <div id="brand" class="content-section active">
+    <div id="brand" class="section active">
         <div class="card">
-            <h2>80 年資深背景</h2>
-            <p>同興實業自有品牌，掌握全台 80% 堅果進口量。</p>
-            <div class="script-box">
-                ✅ <strong>夏威夷豆霸主：</strong>全台每 3 顆有 2 顆出自我們。<br>
-                ✅ <strong>五星指定：</strong>晶華、老爺、文華東方指定原料商。<br>
-                ✅ <strong>AI 技術：</strong>第五代 AI 烘粹技術，保留天然奶香。
-            </div>
+            <h2>為什麼選我們？<span class="badge">信任背書</span></h2>
+            <p><strong>同興實業 80 年背景：</strong> 掌握台灣 80% 堅果市佔。</p>
+            <ul>
+                <li><span class="highlight">夏威夷豆霸主：</span>全台每 3 顆就有 2 顆出自我們。</li>
+                <li><span class="highlight">頂級通路選用：</span>晶華、老爺、文華東方指定合作。</li>
+                <li><span class="highlight">AI 烘粹技術：</span>第五代 AI 控溫，提升新鮮度 20%。</li>
+            </ul>
         </div>
         <div class="card">
             <h2>三步試吃成交法</h2>
-            <p>1. <strong>主動：</strong>「全台最大堅果進口商請您試吃！」</p>
-            <p>2. <strong>重點：</strong>「這是 1 號澳洲夏威夷豆，品質保證。」</p>
-            <p>3. <strong>引導：</strong>「很多名人都在吃，您試試看口感差異～」</p>
+            <p><strong>1. 微笑主動：</strong>「全台最大堅果進口商請您試吃！」</p>
+            <p><strong>2. 亮點切入：</strong>「這是澳洲 1 號等級，很多飯店都用我們的。」</p>
+            <p><strong>3. 感性開場：</strong>「很多藝人私下都買這款蔓越莓，一定要試試。」</p>
         </div>
     </div>
 
-    <div id="products" class="content-section">
+    <div id="products" class="section">
         <div class="card">
-            <h2>精選原味 (純素)</h2>
+            <h2>經典原味系列</h2>
             <div class="product-item">
-                <strong>🩵 夏威夷果</strong><span class="product-tag">澳洲 1 號</span>
-                <div class="script-box">「奶黃色、口感綿密，全台市佔第一，跟一般的碎硬口感完全不同。」</div>
+                <div class="product-title">🩵 夏威夷果 <span class="badge">澳洲 1號</span></div>
+                <div class="quote-box">「奶黃色澤、口感綿密，全台 2/3 的夏豆都來自我們家！」</div>
             </div>
             <div class="product-item">
-                <strong>💚 開心果</strong><span class="product-tag">美國直送</span>
-                <div class="script-box">「比市售大 1.5 倍，零農藥、不苦澀，越嚼越香甜。」</div>
-            </div>
-            <div class="product-item">
-                <strong>🤍 腰果</strong><span class="product-tag">越南日商工廠</span>
-                <div class="script-box">「日本出口級品質，淡淡奶香，給家人吃最安心。」</div>
+                <div class="product-title">🤍 腰果 <span class="badge">日本出口級</span></div>
+                <div class="quote-box">「專供日本市場，新鮮白皙帶有淡奶香，品質極穩。」</div>
             </div>
         </div>
         <div class="card">
-            <h2>明星調味 (必帶款)</h2>
+            <h2>明星調味系列</h2>
             <div class="product-item">
-                <strong>🧀 起司夏豆</strong>
-                <div class="script-box">「帕馬森起司鹹香，吃起來超像起司爆米花，小孩最愛！」</div>
+                <div class="product-title">🧀 起司夏威夷豆</div>
+                <div class="quote-box">「帕馬森起司鹹香，超像起司爆米花，男生小孩必帶！」</div>
             </div>
             <div class="product-item">
-                <strong>🍫 黑鑽可可杏仁</strong>
-                <div class="script-box">「獨家脆皮工法，外脆內香，文青與男生的最愛。」</div>
+                <div class="product-title">🍫 黑鑽可可杏仁</div>
+                <div class="quote-box">「外皮像餅乾脆，微苦可可不甜膩，文青客最愛。」</div>
             </div>
         </div>
     </div>
 
-    <div id="sales" class="section content-section">
+    <div id="sales" class="section">
         <div class="card">
-            <h2>階梯方案 (推 20 包)</h2>
+            <h2>銷售階梯方案</h2>
             <table class="promo-table">
-                <tr><td>10 包</td><td>$569</td><td>省 $131</td></tr>
-                <tr><td><span class="highlight">20 包</span></td><td>$999</td><td>平均 $50/包</td></tr>
-                <tr><td>40 包</td><td>$1699</td><td>現折 $1100</td></tr>
+                <tr><td>10 包方案</td><td>$569 <small>(8折)</small></td></tr>
+                <tr class="best-row"><td>20 包方案 <span class="highlight">★</span></td><td>$999 <small>(平均$50/包)</small></td></tr>
+                <tr><td>40 包方案</td><td>$1699 <small>(最強6折)</small></td></tr>
             </table>
-            <div class="script-box">
-                「20 包方案最划算！我額外加碼送你 4 小包纖果 + 文青電風扇，幫你配到好！」
+            <div class="quote-box">
+                <strong>逼單話術：</strong> 「買 20 包最划算，我額外加碼送你 4 小包迷你纖果 + 電風扇！」
             </div>
         </div>
         <div class="card">
-            <h2>滿額贈品價值化</h2>
+            <h2>滿額贈品攻略</h2>
             <ul>
-                <li><strong>2000：</strong>即期隨手包 4 入</li>
-                <li><strong>3000：</strong>麻布袋 (價值 $799)</li>
-                <li><strong>5000：</strong>雲朵禮盒 (價值 $580) + <span class="highlight">免運寄到家</span></li>
+                <li><strong>滿 3000：</strong>文青麻布袋 (價值 $799)</li>
+                <li><strong>滿 5000：</strong>雲朵禮盒 (價值 $580) + <span class="highlight">免運寄到家</span></li>
             </ul>
         </div>
     </div>
 
-    <div id="qa" class="content-section">
+    <div id="qa" class="section">
         <div class="card">
-            <h2>💬「這包太貴了吧？」</h2>
-            <div class="script-box">「我懂～但這一包才 44 元，比一杯手搖飲還便宜，卻是補足一整天的好油脂。我們不炸、不重調味，這才是真正的健康投資。」</div>
+            <h2>應對話術大補帖</h2>
+            <h3>💬 客人嫌貴？</h3>
+            <p>「這包雖然單價高一點，但平均一天才 44 元，比手搖飲還便宜，卻能換到一整天的健康油脂與營養！」</p>
             
-            <h2>💬「包裝看起來很簡單？」</h2>
-            <div class="script-box">「這叫精品簡約風，燙金跟質感是專門請設計師打樣的。送禮就是要送這種『內行人懂、有品味』的，不會流於俗氣。」</div>
+            <h3>💬 不吃堅果？</h3>
+            <p>「試試黑鑽可可！它吃起來像巧克力餅乾，很多不吃堅果的小朋友和客人都被這款圈粉。」</p>
 
-            <h2>💬「我都不吃堅果。」</h2>
-            <div class="script-box">「那您一定要試吃這款黑鑽可可，吃起來像巧克力餅乾，很多原本抗拒堅果的人都因為這款變粉絲喔！」</div>
+            <h3>💬 包裝太簡單？</h3>
+            <p>「這是精品極簡設計，內行人才懂的質感燙金。送禮送的是品質，不是花俏的盒子。」</p>
         </div>
     </div>
 
 </div>
 
 <footer>
-    LOVIN PREMIUM CONTENT | 青提奶霜視覺版
+    LOVIN INTERNAL KNOWLEDGE BASE<br>
+    © 2026 LOVIN PREMIUM NUTS
 </footer>
 
 <script>
-    function showTab(tabId) {
-        // 更新按鈕狀態
-        document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-
-        // 更新內容狀態
-        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+    function switchTab(tabId) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-
-        // 回到頂部
-        window.scrollTo(0,0);
+        
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 </script>
 
