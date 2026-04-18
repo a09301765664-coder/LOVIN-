@@ -3,142 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 堅果銷售話術助手</title>
+    <title>LOVIN 精品堅果話術助手</title>
     <style>
         :root {
-            --primary-color: #6d4c41;
-            --accent-color: #ffb74d;
-            --bg-color: #f5f5f5;
+            /* 奶油綠色調與金屬質感 */
+            --creamy-green: #e0eadd; 
+            --deep-green: #4a5d4e;
+            --gold-accent: #c5a059;
+            --marble-white: #fdfdfd;
+            --text-color: #333;
         }
 
         body {
-            font-family: "Microsoft JhengHei", sans-serif;
-            background-color: var(--bg-color);
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: var(--creamy-green);
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-color);
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            padding: 40px 20px;
             margin: 0;
         }
 
         .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: var(--marble-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
+            border-top: 8px solid var(--gold-accent);
         }
 
-        h2 {
-            color: var(--primary-color);
+        h1 {
+            color: var(--deep-green);
             text-align: center;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--gold-accent);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
         }
 
         .input-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-weight: bold;
-            color: #555;
+            color: var(--deep-green);
         }
 
-        select, button {
+        select {
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #eee;
+            background-color: #fafafa;
             font-size: 1rem;
+            appearance: none;
+            cursor: pointer;
+            outline: none;
+            transition: border 0.3s;
         }
 
-        button {
-            background-color: var(--primary-color);
+        select:focus {
+            border-color: var(--gold-accent);
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--deep-green);
             color: white;
             border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(74, 93, 78, 0.2);
         }
 
-        button:hover {
-            background-color: #4e342e;
+        .generate-btn:hover {
+            background-color: #3a4a3e;
+            transform: translateY(-2px);
         }
 
         #result-area {
             margin-top: 2rem;
-            padding: 1rem;
-            background: #fff8e1;
-            border-left: 5px solid var(--accent-color);
             display: none;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        .script-text {
-            line-height: 1.6;
-            color: #333;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: #fcfcfc;
+            border: 1px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .tag-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 5px;
+        }
+
+        .tag-fact { background: #eee; color: #666; }
+        .tag-logic { background: #e8f0e9; color: var(--deep-green); border: 1px solid var(--deep-green); }
+
+        .script-box {
+            background: #fff;
+            border-left: 4px solid var(--gold-accent);
+            padding: 15px;
+            margin-top: 10px;
+            line-height: 1.8;
+            color: #444;
             white-space: pre-line;
+            font-size: 1.05rem;
         }
 
         .copy-btn {
+            display: block;
+            margin: 10px 0 0 auto;
             background: none;
-            color: var(--primary-color);
-            text-decoration: underline;
-            font-size: 0.8rem;
             border: none;
-            width: auto;
+            color: var(--gold-accent);
             cursor: pointer;
-            padding: 0;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-top: 2rem;
+            opacity: 0.5;
+            font-size: 0.8rem;
+            color: var(--deep-green);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>🌰 堅果銷售話術助手</h2>
+    <h1>LOVIN SCRIPT</h1>
+    <div class="subtitle">AI 銷售情境助手</div>
     
     <div class="input-group">
-        <label for="scenario">客戶遇到的困擾：</label>
-        <select id="scenario">
-            <option value="expensive">覺得價格太貴</option>
-            <option value="health">擔心熱量太高</option>
-            <option value="brand">為什麼要買你們家？</option>
-            <option value="gift">送禮不知道選哪種</option>
+        <label for="scenario">🔍 選擇客人的反應：</label>
+        <select id="scenario" onchange="generateScript()">
+            <option value="" disabled selected>請選擇一個情境...</option>
+            <option value="q1">🟡 Q1：客人說「有點貴」</option>
+            <option value="q2">🟡 Q2：客人說「我沒有在吃堅果」</option>
+            <option value="q3">🟡 Q3：客人說「我都吃別牌」</option>
+            <option value="q4">🟡 Q4：客人試吃後說「還好」</option>
+            <option value="q5">🟡 Q5：客人說「我再看看」</option>
+            <option value="q6">🟡 Q6：客人問「會不會太甜/會胖嗎」</option>
+            <option value="q7">🟡 Q7：客人說「我對堅果過敏」</option>
+            <option value="q8">🟡 Q8：客人說「看起來還好」</option>
+            <option value="q9">🟡 Q9：客人問「有沒有推薦」</option>
+            <option value="q10">🟡 Q10：客人買很多但猶豫</option>
         </select>
     </div>
 
-    <button onclick="generateScript()">生成 AI 建議話術</button>
-
     <div id="result-area">
-        <strong>💡 AI 建議回覆：</strong>
-        <p id="script-output" class="script-text"></p>
-        <button class="copy-btn" onclick="copyText()">複製話術</button>
+        <div class="card">
+            <div class="tag-row">
+                <span class="tag tag-fact" id="fact-text">事實</span>
+                <span class="tag tag-logic" id="logic-text">推論</span>
+            </div>
+            <div class="script-box" id="script-output">
+                請選擇情境來生成話術...
+            </div>
+            <button class="copy-btn" onclick="copyText()">點擊複製話術內容</button>
+        </div>
     </div>
+
+    <div class="footer-logo">Premium Nuts | Boutique Experience</div>
 </div>
 
 <script>
-    const scripts = {
-        expensive: "「我完全理解您的想法，好的堅果確實不便宜。但我們的堅果採用『低溫烘焙』，比起一般的油炸堅果，保留了更多維生素與不飽和脂肪酸。平均下來，每天花不到一杯咖啡的錢，就能買到一整天的健康，其實是非常划算的投資喔！」",
-        health: "「這點請放心！其實堅果裡的油脂是『好油』，適量攝取反而有助於代謝。我們家不添加糖跟鹽，您可以每天吃一小把（約 5-10 顆），既能增加飽足感，又不用擔心負擔太重！」",
-        brand: "「我們家最大的特色在於『新鮮度』。從產地挑選到入倉烘焙不超過三個月，且每批都經過 SGS 檢驗。您可以聞聞看，我們家完全沒有油耗味，只有天然的果香。」",
-        gift: "「如果是送禮的話，我強烈推薦我們的『綜合果仁禮盒』。裡面包含腰果、核桃跟夏威夷豆，不僅口感層次豐富，大方體面，且對於長輩或注重健康的朋友來說，這絕對是最貼心的選擇。」"
+    const data = {
+        q1: {
+            fact: "✔ 顧客對價格有抗拒",
+            logic: "🔍 不是真的貴，是「價值感不足」",
+            scripts: "• 「很多客人一開始也會這樣覺得，但吃過之後會回來，主要是因為我們的烘焙方式比較不一樣，口感會比較乾淨、不油膩～」\n\n• 「其實我們比較像精品堅果，跟一般大量烘焙的吃起來差異滿明顯的」\n\n• 「如果你是送禮的話，很多人會選這個，因為質感跟內容都比較有面子」"
+        },
+        q2: {
+            fact: "✔ 非明確需求",
+            logic: "🔍 可轉換成送禮或體驗",
+            scripts: "• 「那你平常會送禮嗎？其實很多人是買來送人的～」\n\n• 「還是你可以先吃看看，有些人原本不太吃，但會被某些口味打到」\n\n• 「我們有些口味比較像零食，不太像傳統堅果，可以試試看」"
+        },
+        q3: {
+            fact: "✔ 已有消費習慣",
+            logic: "🔍 可以引導比較優勢",
+            scripts: "• 「那你其實是懂吃的！我們這個跟一般烘焙方式不太一樣，可以吃看看差異～」\n\n• 「很多客人原本也是吃別牌，後來會回來是因為口感比較不油」\n\n• 「你可以當作升級版吃看看」"
+        },
+        q4: {
+            fact: "✔ 沒有被打中",
+            logic: "🔍 口味沒選對",
+            scripts: "• 「我幫你換一個比較有特色的，很多人會比較有感」\n\n• 「剛剛那個比較偏清爽型，我幫你試一個比較重口味的」\n\n• 「你比較喜歡甜的還是鹹的？我幫你挑一個」"
+        },
+        q5: {
+            fact: "✔ 猶豫中",
+            logic: "🔍 缺少購買理由",
+            scripts: "• 「如果今天有活動，其實現在拿會比較劃算」\n\n• 「我可以幫你搭一組最多人買的，會比較不會選擇困難」\n\n• 「很多人都是先試一包，喜歡之後再回來帶多一點」"
+        },
+        q6: {
+            fact: "✔ 健康疑慮",
+            logic: "🔍 需要安全感",
+            scripts: "• 「我們原味系列都是無糖無鹽的，調味的才會有一點點」\n\n• 「其實一天吃一點堅果是健康的，很多人在控制飲食也會吃」\n\n• 「我們的重點是烘焙方式比較乾淨，不會有油耗味」"
+        },
+        q7: {
+            fact: "✔ 真風險",
+            logic: "🔍 不能強推",
+            scripts: "• 「這部分要比較小心，我們產品都有堅果成分」\n\n• 「建議還是以安全為主，避免嘗試會比較好」\n\n（*注意：此情境請停止推銷）"
+        },
+        q8: {
+            fact: "✔ 包裝吸引力不足",
+            logic: "🔍 需要轉情境",
+            scripts: "• 「如果是送禮的話，我們禮盒會比較有質感」\n\n• 「很多人是拿來送客戶或長輩，會比較體面」\n\n• 「這個是日常吃的，禮盒會更精緻一點」"
+        },
+        q9: {
+            fact: "✔ 願意購買但不知道選什麼",
+            logic: "🔍 成交機會高",
+            scripts: "• 「如果第一次的話，我會建議這個組合，很多人都從這個開始」\n\n• 「這個是我們賣最好的口味」\n\n• 「你比較偏甜還是鹹？我幫你配」"
+        },
+        q10: {
+            fact: "✔ 高價單客",
+            logic: "🔍 需要合理化購買",
+            scripts: "• 「你這樣搭其實滿劃算的，很多人會直接這樣帶」\n\n• 「這個送禮跟自己吃都可以分開用」\n\n• 「現在活動這樣拿是最劃算的組合」"
+        }
     };
 
     function generateScript() {
-        const scenario = document.getElementById('scenario').value;
-        const output = document.getElementById('script-output');
-        const resultArea = document.getElementById('result-area');
+        const val = document.getElementById('scenario').value;
+        const res = document.getElementById('result-area');
         
-        output.innerText = scripts[scenario];
-        resultArea.style.display = 'block';
+        document.getElementById('fact-text').innerText = data[val].fact;
+        document.getElementById('logic-text').innerText = data[val].logic;
+        document.getElementById('script-output').innerText = data[val].scripts;
+        
+        res.style.display = 'block';
     }
 
     function copyText() {
         const text = document.getElementById('script-output').innerText;
         navigator.clipboard.writeText(text).then(() => {
-            alert('話術已複製到剪貼簿！');
+            alert('話術已複製，可以傳給門市夥伴了！');
         });
     }
 </script>
