@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 堅果銷售話術助手</title>
+    <style>
+        :root {
+            --primary-color: #6d4c41;
+            --accent-color: #ffb74d;
+            --bg-color: #f5f5f5;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #4e342e;
+        }
+
+        #result-area {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #fff8e1;
+            border-left: 5px solid var(--accent-color);
+            display: none;
+        }
+
+        .script-text {
+            line-height: 1.6;
+            color: #333;
+            white-space: pre-line;
+        }
+
+        .copy-btn {
+            background: none;
+            color: var(--primary-color);
+            text-decoration: underline;
+            font-size: 0.8rem;
+            border: none;
+            width: auto;
+            cursor: pointer;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🌰 堅果銷售話術助手</h2>
+    
+    <div class="input-group">
+        <label for="scenario">客戶遇到的困擾：</label>
+        <select id="scenario">
+            <option value="expensive">覺得價格太貴</option>
+            <option value="health">擔心熱量太高</option>
+            <option value="brand">為什麼要買你們家？</option>
+            <option value="gift">送禮不知道選哪種</option>
+        </select>
+    </div>
+
+    <button onclick="generateScript()">生成 AI 建議話術</button>
+
+    <div id="result-area">
+        <strong>💡 AI 建議回覆：</strong>
+        <p id="script-output" class="script-text"></p>
+        <button class="copy-btn" onclick="copyText()">複製話術</button>
+    </div>
+</div>
+
+<script>
+    const scripts = {
+        expensive: "「我完全理解您的想法，好的堅果確實不便宜。但我們的堅果採用『低溫烘焙』，比起一般的油炸堅果，保留了更多維生素與不飽和脂肪酸。平均下來，每天花不到一杯咖啡的錢，就能買到一整天的健康，其實是非常划算的投資喔！」",
+        health: "「這點請放心！其實堅果裡的油脂是『好油』，適量攝取反而有助於代謝。我們家不添加糖跟鹽，您可以每天吃一小把（約 5-10 顆），既能增加飽足感，又不用擔心負擔太重！」",
+        brand: "「我們家最大的特色在於『新鮮度』。從產地挑選到入倉烘焙不超過三個月，且每批都經過 SGS 檢驗。您可以聞聞看，我們家完全沒有油耗味，只有天然的果香。」",
+        gift: "「如果是送禮的話，我強烈推薦我們的『綜合果仁禮盒』。裡面包含腰果、核桃跟夏威夷豆，不僅口感層次豐富，大方體面，且對於長輩或注重健康的朋友來說，這絕對是最貼心的選擇。」"
+    };
+
+    function generateScript() {
+        const scenario = document.getElementById('scenario').value;
+        const output = document.getElementById('script-output');
+        const resultArea = document.getElementById('result-area');
+        
+        output.innerText = scripts[scenario];
+        resultArea.style.display = 'block';
+    }
+
+    function copyText() {
+        const text = document.getElementById('script-output').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('話術已複製到剪貼簿！');
+        });
+    }
+</script>
+
+</body>
+</html>
